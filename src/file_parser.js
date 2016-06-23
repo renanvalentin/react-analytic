@@ -1,6 +1,7 @@
 module.exports = {
   extractModule: (modulePath) => {
-    return modulePath;
+   const result = modulePath.match(/(?:import)\s(.+)(?:from)\s['|"](.*)['|"];?/)
+   return result.pop();
   }
 }
 
