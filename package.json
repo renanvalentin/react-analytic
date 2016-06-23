@@ -4,7 +4,8 @@
   "description": "Shows your components dependencies",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --require ./test/test_helper.js test/**.*js",
+    "test:watch": "npm run test -- --watch"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,9 @@
   "bugs": {
     "url": "https://github.com/renanvalentin/react-analytic/issues"
   },
-  "homepage": "https://github.com/renanvalentin/react-analytic#readme"
+  "homepage": "https://github.com/renanvalentin/react-analytic#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3"
+  }
 }
