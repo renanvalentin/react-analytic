@@ -1,7 +1,7 @@
 const fileParser = require('../src/file_parser.js')
 
 describe('File Parser', () => {
-  it.only('should get a list of modules from the file', () => {
+  it('should get a list of modules from the file', () => {
     const file = [
       'import ModuleA from \'path/to/ModuleA\'',
       'import ModuleA from \'path/to/ModuleB\'',

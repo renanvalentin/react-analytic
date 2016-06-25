@@ -1,6 +1,14 @@
 module.exports = {
+  isJSX,
   parse,
   extractModule
+}
+
+function isJSX(file) {
+  const firstLine = file.split('\n')[0]
+  const module = extractModule(firstLine)
+
+  return module && module.indexOf('react') > -1
 }
 
 function parse(file) {
