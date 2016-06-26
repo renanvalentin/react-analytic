@@ -38,3 +38,6 @@ jspm_packages
 
 # Vim
 .swp
+
+# Test files
+references.json
