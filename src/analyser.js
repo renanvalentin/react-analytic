@@ -1,9 +1,9 @@
 module.exports = {
-  compute
+  compute,
+  results
 }
 
 let tree = {}
-
 function compute(entry, modules) {
   initNode(entry)
   tree[entry].dependencies = modules
@@ -29,4 +29,8 @@ function setReference(module, reference) {
   if(tree[module].references.indexOf(reference) === -1) {
     tree[module].references.push(reference)
   }
+}
+
+function results() {
+  return tree;
 }
