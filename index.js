@@ -1,5 +1,10 @@
 const fs = require('fs')
 const glob = require('glob')
+const Promise = require('bluebird')
+
+Promise.promisifyAll(fs)
+
+const buildData = require('./src/build_data.js')
 
 glob('../crave/webapp/src/**/*.js', (err, files) => {
   if(err) {
@@ -7,7 +12,17 @@ glob('../crave/webapp/src/**/*.js', (err, files) => {
     return
   }
 
-  console.log(files)
+  let queue = []
+  files.forEach(path => {
+   const op =  fs.readFileAsync(path, 'utf-8').then((file) => {
+      buildData.analyse(path.replace('../crave/webapp/src/', ''), file)
+    })
 
-  files.forEach(file => fs.readFile())
+    queue.push(op)
+  })
+
+  Promise.all(queue).then(() => {
+   const results = buildData.results()
+   fs.writeFile('./references.json', JSON.stringify(results, null, 4))
+  })
 })
