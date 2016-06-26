@@ -2,14 +2,19 @@ const fileParser = require('./file_parser.js')
 const analyser = require('./analyser.js')
 
 module.exports = {
-  analyse
+  analyse,
+  results
 }
 
-function analyse(file) {
+function analyse(fileName, file) {
   if(fileParser.isJSX(file)) {
     const modules = fileParser.parse(file)
-    analyser.compute(file, modules)
+    analyser.compute(fileName, modules)
   }
 
+  return analyser.results()
+}
+
+function results() {
   return analyser.results()
 }

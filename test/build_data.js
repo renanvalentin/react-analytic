@@ -25,6 +25,8 @@ describe('Build Data', () => {
       }
     })
 
+    const path = '../path/to/file';
+
     const file = [
       'import ModuleA from \'path/to/ModuleA\'',
       'import ModuleA from \'path/to/ModuleB\'',
@@ -33,10 +35,10 @@ describe('Build Data', () => {
       '// some js...'
     ].join('\n')
 
-    const result = buildData.analyse(file)
+    const result = buildData.analyse(path, file)
 
     parseStub.should.have.been.calledWith(file)
-    computeStub.should.have.been.calledWith(file, modules)
+    computeStub.should.have.been.calledWith(path, modules)
     resultsStub.should.have.been.called
 
     result.should.eql(expectedResult)
