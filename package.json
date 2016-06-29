@@ -24,11 +24,15 @@
   },
   "homepage": "https://github.com/renanvalentin/react-analytic#readme",
   "devDependencies": {
+    "browserify": "^13.0.1",
     "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-connect": "^4.1.0",
     "mocha": "^2.5.3",
     "proxyquire": "^1.7.9",
     "sinon": "^1.17.4",
-    "sinon-chai": "^2.8.0"
+    "sinon-chai": "^2.8.0",
+    "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
     "bluebird": "^3.4.1",
