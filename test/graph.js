@@ -1,7 +1,7 @@
 const graph = require('../app/graph.js')
 
 describe('Graph', () => {
-  it('should generate points map', () => {
+  it.only('should generate points map', () => {
     const state = {
       'module/a/b': {
         dependencies: ['path/to/ModuleA', 'path/to/ModuleB'],
@@ -20,27 +20,30 @@ describe('Graph', () => {
     const graphic = graph.create(state)
 
     graphic.should.eql({
-      'module/a/b': {
-        x: 0,
-        y: 0,
-        size: 10,
-        dependencies: ['path/to/ModuleA', 'path/to/ModuleB'],
-        references: []
-      },
-      'path/to/ModuleA': {
-        x: 11,
-        y: 11,
-        size: 11,
-        dependencies: [],
-        references: ['module/a/b']
-      },
-      'path/to/ModuleB': {
-        x: 22,
-        y: 22,
-        size: 11,
-        dependencies: [],
-        references: ['module/a/b']
-      }
-    })
+        nodes: [
+          {
+            id: 'module/a/b',
+            name: 'module/a/b'
+          },
+          {
+            id: 'path/to/ModuleA',
+            name: 'path/to/ModuleA'
+          },
+          {
+            id: 'path/to/ModuleB',
+            name: 'path/to/ModuleB'
+          }
+        ],
+        links: [
+          {
+            source: 'module/a/b',
+            target: 'path/to/ModuleA'
+          },
+          {
+            source: 'module/a/b',
+            target: 'path/to/ModuleB'
+          }
+        ]
+      })
   })
 })
