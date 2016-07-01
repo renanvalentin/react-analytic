@@ -10,11 +10,13 @@ function createCoords(state, key, tree) {
   const node = state[key]
 
   const leaves = Object.keys(tree).length
-  const size = calculateSpatialDistribuition(node)
+
+  const minimumSize = 10
+  const size = minimumSize + node.references.length
 
   tree[key] = {
-    x: calculateCoords(node) + leaves,
-    y: calculateCoords(node) + leaves,
+    x: leaves * size,
+    y: leaves * size,
     size: size,
     dependencies: node.dependencies.slice(),
     references: node.references.slice()
@@ -24,17 +26,15 @@ function createCoords(state, key, tree) {
 }
 
 function calculateSpatialDistribuition(node) {
-  const minimunRequired = 1
-  const references = node.references.length + minimunRequired
-  const dependencies = node.dependencies.length + minimunRequired
+  const references = node.references.length
+  const dependencies = node.dependencies.length
 
   return (references * dependencies) / dependencies
 }
 
 function calculateCoords(node) {
-  const minimunRequired = 1
-  const references = node.references.length + minimunRequired
-  const dependencies = node.dependencies.length + minimunRequired
+  const references = node.references.length
+  const dependencies = node.dependencies.length
 
   return references * dependencies
 }

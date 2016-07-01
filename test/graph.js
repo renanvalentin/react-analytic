@@ -21,23 +21,23 @@ describe('Graph', () => {
 
     graphic.should.eql({
       'module/a/b': {
-        x: 3,
-        y: 3,
-        size: 1,
+        x: 0,
+        y: 0,
+        size: 10,
         dependencies: ['path/to/ModuleA', 'path/to/ModuleB'],
         references: []
       },
       'path/to/ModuleA': {
-        x: 3,
-        y: 3,
-        size: 2,
+        x: 11,
+        y: 11,
+        size: 11,
         dependencies: [],
         references: ['module/a/b']
       },
       'path/to/ModuleB': {
-        x: 4,
-        y: 4,
-        size: 2,
+        x: 22,
+        y: 22,
+        size: 11,
         dependencies: [],
         references: ['module/a/b']
       }
