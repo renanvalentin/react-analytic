@@ -24,17 +24,3 @@ function createCoords(state, key, tree) {
 
   return tree
 }
-
-function calculateSpatialDistribuition(node) {
-  const references = node.references.length
-  const dependencies = node.dependencies.length
-
-  return (references * dependencies) / dependencies
-}
-
-function calculateCoords(node) {
-  const references = node.references.length
-  const dependencies = node.dependencies.length
-
-  return references * dependencies
-}
