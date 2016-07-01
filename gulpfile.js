@@ -23,7 +23,7 @@ gulp.task('html', function () {
     .pipe(connect.reload());
 });
 
-gulp.task('watch', function () {
+gulp.task('watch', ['browserify', 'html'], function () {
   gulp.watch(['./app/*.html'], ['html']);
   gulp.watch(['./app/*.js'], ['browserify']);
 });
