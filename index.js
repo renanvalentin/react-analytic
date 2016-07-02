@@ -12,16 +12,16 @@ glob('../crave/webapp/src/**/*.js', (err, files) => {
     return
   }
 
-  const excludeModules = [
-    'react',
-    'react-redux',
-    'immutable'
+  const whitelist = [
+    'components',
+    'containers',
+    'views'
   ]
 
   let queue = []
   files.forEach(path => {
    const op =  fs.readFileAsync(path, 'utf-8').then((file) => {
-      buildData.analyse(path.replace('../crave/webapp/src/', ''), file, excludeModules)
+      buildData.analyse(path.replace('../crave/webapp/src/', ''), file, whitelist)
     })
 
     queue.push(op)
