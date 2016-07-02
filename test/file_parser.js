@@ -10,7 +10,11 @@ describe('File Parser', () => {
       '// some js...'
     ].join('\n')
 
-    const modules = fileParser.parse(file)
+    const whitelist  = [
+      'path/to/'
+    ]
+
+    const modules = fileParser.parse(file, whitelist)
     modules.should.eql([
       'path/to/ModuleA',
       'path/to/ModuleB',
@@ -18,7 +22,7 @@ describe('File Parser', () => {
     ])
   })
 
-  it('should exclude modules passed to parse', () => {
+  it('should add only the modules from the whitelist', () => {
     const file = [
       'import React from \'react\'',
       'import redux from \'react-redux\'',
@@ -27,12 +31,11 @@ describe('File Parser', () => {
       '// some js...'
     ].join('\n')
 
-    const excludeModules = [
-      'react',
-      'react-redux'
+    const whitelist  = [
+      'path/to/'
     ]
 
-    const modules = fileParser.parse(file, excludeModules)
+    const modules = fileParser.parse(file, whitelist)
     modules.should.eql([
       'path/to/ModuleA'
     ])

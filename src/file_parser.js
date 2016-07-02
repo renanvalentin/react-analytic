@@ -11,13 +11,14 @@ function isJSX(file) {
   return module && module.indexOf('react') > -1
 }
 
-function parse(file, excludeModules = []) {
+function parse(file, whitelist = []) {
   return file.split('\n').reduce((modules, line) => {
     const module = extractModule(line)
-    const shouldBeIgnored = excludeModules.some(exclude => module === exclude)
 
-    if(module && !shouldBeIgnored)
-      modules.push(module)
+    if(module) {
+      const isAllowed = whitelist.some(item => module.indexOf(item) > -1)
+      isAllowed && modules.push(module)
+    }
 
     return modules
   }, [])
