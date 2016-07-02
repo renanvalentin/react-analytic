@@ -16,7 +16,8 @@ function createCoords(state, key) {
 
   tree.nodes.push({
     id: key,
-    name: key
+    name: key,
+    references: node.references.length
   })
 
   const links = node.dependencies.map(dep => ({
