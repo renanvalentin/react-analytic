@@ -1,7 +1,7 @@
 const graph = require('../app/graph.js')
 
 describe('Graph', () => {
-  it.only('should generate points map', () => {
+  it('should generate points map', () => {
     const state = {
       'module/a/b': {
         dependencies: ['path/to/ModuleA', 'path/to/ModuleB'],

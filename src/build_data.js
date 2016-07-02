@@ -6,9 +6,9 @@ module.exports = {
   results
 }
 
-function analyse(fileName, file) {
+function analyse(fileName, file, excludeModules = []) {
   if(fileParser.isJSX(file)) {
-    const modules = fileParser.parse(file)
+    const modules = fileParser.parse(file, excludeModules)
     analyser.compute(fileName, modules)
   }
 

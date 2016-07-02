@@ -11,11 +11,12 @@ function isJSX(file) {
   return module && module.indexOf('react') > -1
 }
 
-function parse(file) {
+function parse(file, excludeModules = []) {
   return file.split('\n').reduce((modules, line) => {
     const module = extractModule(line)
+    const shouldBeIgnored = excludeModules.some(exclude => module === exclude)
 
-    if(module)
+    if(module && !shouldBeIgnored)
       modules.push(module)
 
     return modules

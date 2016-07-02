@@ -18,6 +18,26 @@ describe('File Parser', () => {
     ])
   })
 
+  it('should exclude modules passed to parse', () => {
+    const file = [
+      'import React from \'react\'',
+      'import redux from \'react-redux\'',
+      'import ModuleA from \'path/to/ModuleA\'',
+      '',
+      '// some js...'
+    ].join('\n')
+
+    const excludeModules = [
+      'react',
+      'react-redux'
+    ]
+
+    const modules = fileParser.parse(file, excludeModules)
+    modules.should.eql([
+      'path/to/ModuleA'
+    ])
+  })
+
   it('should extract the path from the imported module', () => {
      const module = 'import Component from \'path/to/Component\''
      const path = fileParser.extractModule(module)
