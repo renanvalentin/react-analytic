@@ -23,15 +23,18 @@ describe('Graph', () => {
         nodes: [
           {
             id: 'module/a/b',
-            name: 'module/a/b'
+            name: 'module/a/b',
+            references: 0
           },
           {
             id: 'path/to/ModuleA',
-            name: 'path/to/ModuleA'
+            name: 'path/to/ModuleA',
+            references: 1
           },
           {
             id: 'path/to/ModuleB',
-            name: 'path/to/ModuleB'
+            name: 'path/to/ModuleB',
+            references: 1
           }
         ],
         links: [
