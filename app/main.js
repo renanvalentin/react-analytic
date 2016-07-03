@@ -9,7 +9,7 @@ var width = window.innerWidth,
     height = window.innerHeight;
 
   var countExtent = d3.extent(graph.nodes, d => d.references)
-  var circleRadius = d3.scale.sqrt().range([3, 12]).domain(countExtent)
+  var circleRadius = d3.scale.sqrt().range([3, 32]).domain(countExtent)
 
   graph.nodes.forEach(n => {
     n.x = Math.floor(Math.random() * width)
@@ -18,7 +18,7 @@ var width = window.innerWidth,
   });
 
 var force = d3.layout.force()
-    .charge(-200)
+    .charge(-1050)
     .linkDistance(50)
     .size([width, height]);
 
@@ -54,7 +54,7 @@ var color = d3.scale.category20()
     .enter().append("circle")
       .attr("class", "node")
       .attr("r", (d) => d.radius)
-      .style("fill", d => color(d.name))
+      .style("fill", d => color(d.group))
       .call(force.drag);
 
   node.append("title")
