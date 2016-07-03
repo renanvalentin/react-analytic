@@ -37,13 +37,25 @@ function createCoords(state, key) {
 
 },{}],2:[function(require,module,exports){
 const graphics = require('./graph')
+const network = require('./network')
 
 const xhr = new XMLHttpRequest()
 xhr.open('GET', 'data.json')
 xhr.onload = () => {
   var graph = graphics.create(JSON.parse(xhr.response))
+  network.create(graph)
+}
 
-var width = window.innerWidth,
+xhr.send()
+
+
+},{"./graph":1,"./network":3}],3:[function(require,module,exports){
+module.exports = {
+  create
+}
+
+function create(graph) {
+  var width = window.innerWidth,
     height = window.innerHeight;
 
   var countExtent = d3.extent(graph.nodes, d => d.references)
@@ -55,12 +67,12 @@ var width = window.innerWidth,
     n.radius = circleRadius(n.references)
   });
 
-var force = d3.layout.force()
-    .charge(-1050)
+  var force = d3.layout.force()
+    .charge(-200)
     .linkDistance(50)
     .size([width, height]);
 
-var svg = d3.select("body").append("svg")
+  var svg = d3.select("body").append("svg")
     .attr("width", "100%")
     .attr("height", "100%")
     .call(d3.behavior.zoom().on('zoom', () => {
@@ -68,7 +80,7 @@ var svg = d3.select("body").append("svg")
     }))
     .append('g')
 
-var color = d3.scale.category20()
+  var color = d3.scale.category20()
 
   var nodeById = d3.map();
 
@@ -111,22 +123,7 @@ var color = d3.scale.category20()
     node.attr("cx", function(d) { return d.x; })
         .attr("cy", function(d) { return d.y; });
   });
-
-
-
 }
 
 
-xhr.send()
-
-
-
-function setup() {
-
-}
-
-function draw() {
-  ellipse(50, 50, 50, 50)
-}
-
-},{"./graph":1}]},{},[2]);
+},{}]},{},[2]);
