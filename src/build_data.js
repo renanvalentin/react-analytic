@@ -9,7 +9,7 @@ module.exports = {
 function analyse(fileName, file, whitelist = []) {
   if(fileParser.isJSX(file)) {
     const modules = fileParser.parse(file, whitelist)
-    analyser.compute(fileName, modules)
+    analyser.compute(fileName, modules, file)
   }
 
   return analyser.results()

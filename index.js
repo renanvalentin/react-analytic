@@ -29,6 +29,6 @@ glob('../crave/webapp/src/**/*.js', (err, files) => {
 
   Promise.all(queue).then(() => {
    const results = buildData.results()
-   fs.writeFile('./references.json', JSON.stringify(results, null, 4))
+   fs.writeFile('./app/data.json', JSON.stringify(results, null, 4))
   })
 })

@@ -15,10 +15,14 @@ function create(state) {
 function createCoords(state, key) {
   const node = state[key]
 
+  let group = key.split('/')
+  group.pop()
+
   tree.nodes.push({
     id: key,
     name: key,
-    references: node.references.length
+    references: node.references.length,
+    group: group.join('/')
   })
 
   const links = node.dependencies.map(dep => ({
