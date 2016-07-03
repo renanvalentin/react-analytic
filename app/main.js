@@ -23,8 +23,12 @@ var force = d3.layout.force()
     .size([width, height]);
 
 var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height);
+    .attr("width", "100%")
+    .attr("height", "100%")
+    .call(d3.behavior.zoom().on('zoom', () => {
+      svg.attr('transform', 'translate(' + d3.event.translate + ') scale(' + d3.event.scale + ')')
+    }))
+    .append('g')
 
 var color = d3.scale.category20()
 
