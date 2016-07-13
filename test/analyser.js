@@ -1,4 +1,4 @@
-const analyser = require('../src/analyser.js')
+const analyser = require('../lib/analyser.js')
 
 describe('Analyser', () => {
   beforeEach(() => {

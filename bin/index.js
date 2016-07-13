@@ -17,7 +17,3 @@ if(program.serve) {
   const tasks = require('../gulpfile.js')
   gulp.start('serve')
 }
-
-
-
-//require('../index.js')

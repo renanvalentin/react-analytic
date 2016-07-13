@@ -14,7 +14,7 @@ describe('Build Data', () => {
     const computeStub = sinon.stub()
     const resultsStub = sinon.stub().returns(expectedResult)
 
-    const buildData = proxyquire('../src/build_data', {
+    const buildData = proxyquire('../lib/build_data', {
       './file_parser.js': {
         isJSX: isJSXStub,
         parse: parseStub

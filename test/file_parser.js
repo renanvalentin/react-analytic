@@ -1,4 +1,4 @@
-const fileParser = require('../src/file_parser.js')
+const fileParser = require('../lib/file_parser.js')
 
 describe('File Parser', () => {
   it('should get a list of modules from the file', () => {
