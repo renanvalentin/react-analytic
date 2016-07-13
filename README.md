@@ -72,7 +72,7 @@ This will create a tree like this:
 You can add React Analytic from the root directory of any project.
 
 ```sh
-$ npm install --save-dev react-analytic
+$ npm install react-analytic -g
 ```
 
 ## Setup
