@@ -145,4 +145,10 @@ It will generates the tree and finally, to visualize it, run:
 react-analytic serve
 ```
 
+Finally, open your browser and access:
+
+```sh
+localhost:8080
+```
+
 Thanks!
