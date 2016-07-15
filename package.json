@@ -9,6 +9,9 @@
     "start": "node index.js"
   },
   "bin": "./bin/index.js",
+  "engines": {
+    "node": ">= 6.2.1"
+  }, 
   "repository": {
     "type": "git",
     "url": "git+https://github.com/renanvalentin/react-analytic.git"
